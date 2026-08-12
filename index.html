@@ -46,16 +46,17 @@
         useEffect(() => {
           fetch('./data/disciplinas.json')
             .then((res) => {
-              if (!res.ok) {
-                throw new Error('Erro ao carregar os dados');
-              }
+              console.log('1. Resposta recebida:', res);
               return res.json();
             })
             .then((data) => {
+              console.log('2. Dados parseados:', data);
+              console.log('3. Cursos:', data.cursos);
               setDados(data);
               setCarregando(false);
             })
             .catch((err) => {
+              console.error('4. Erro no fetch:', err);
               setErro(err.message);
               setCarregando(false);
             });
