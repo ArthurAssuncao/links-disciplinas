@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Teste React</title>
+    <meta charset="UTF-8" />
+    <title>Teste React sem Rocket</title>
   </head>
   <body>
     <div id="root"></div>
+    
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-      console.log('React + Babel carregados!');
-      function App() {
-        return <h1>React funcionou!</h1>;
-      }
+      console.log('Script carregado!');
       const root = ReactDOM.createRoot(document.getElementById('root'));
-      root.render(<App />);
+      root.render(<h1>Funcionou!</h1>);
     </script>
   </body>
 </html>
