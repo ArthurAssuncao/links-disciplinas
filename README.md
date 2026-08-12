@@ -2,8 +2,6 @@
 
 Portal simples e elegante para professores organizarem e compartilharem links de materiais didáticos por curso e disciplina.
 
-![Preview do Projeto](https://i.imgur.com/example.png)
-
 ## ✨ Funcionalidades
 
 - 📂 **Organizado por curso** – Cada curso possui suas disciplinas agrupadas
