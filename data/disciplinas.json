@@ -1,0 +1,101 @@
+{
+  "cursos": [
+    {
+      "curso": "Sistemas de Informação",
+      "disciplinas": [
+        {
+          "nome": "Matemática Discreta",
+          "links": {
+            "Pasta Geral": {
+              "descricao": "Pasta Geral",
+              "url": "https://drive.google.com/drive/folders/10K_J0NQK4u6BRFFQKUV3qdmpbHzlbt6D?usp=drive_link"
+            },
+            "Slides": {
+              "descricao": "Slides",
+              "url": "https://drive.google.com/drive/folders/1tpAI0QBv7y1_LAdcX4DKpXIZ64NEpcvk?usp=drive_link"
+            },
+            "Conteúdo": {
+              "descricao": "Conteúdo",
+              "url": "https://drive.google.com/drive/folders/1kwpqSRJaiD5_FJHfdq_jMCFgZMxtfPNZ?usp=drive_link",
+              "disabled": true
+            },
+            "Atividades": {
+              "descricao": "Atividades",
+              "url": "https://drive.google.com/drive/folders/13r5SEbUofZW96vGZweh6qmUEpwCnwZ7-?usp=drive_link"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "curso": "Técnico em Informática",
+      "disciplinas": [
+        {
+          "nome": "Construção de páginas Web 1",
+          "links": {
+            "Pasta Geral": {
+              "descricao": "Pasta Geral",
+              "url": "https://drive.google.com/drive/folders/1eYtxbJt9mQ1IXfgAPSIzkjR2FbaKAqF4?usp=drive_link"
+            },
+            "Slides": {
+              "descricao": "Slides",
+              "url": "https://drive.google.com/drive/folders/1SL1bi84k0ui4NPNBqpOwtFeJmZqybz7G?usp=drive_link",
+              "disabled": true
+            },
+            "Conteúdo": {
+              "descricao": "Conteúdo",
+              "url": "https://drive.google.com/drive/folders/11_Aj938jlrvq81A33Bm3JhjYJ7g-zDHf?usp=drive_link"
+            },
+            "Atividades": {
+              "descricao": "Atividades",
+              "url": "https://drive.google.com/drive/folders/1S9lYS-v7E_pPMB92IZJTHVAZsjWkVLmN?usp=drive_link"
+            }
+          }
+        },
+        {
+          "nome": "Montagem e Manutenção",
+          "links": {
+            "Pasta Geral": {
+              "descricao": "Pasta Geral",
+              "url": "https://drive.google.com/drive/folders/1ilhLacnQ150uEwrvT_cd5DTeBGaQl8nm?usp=drive_link"
+            },
+            "Slides": {
+              "descricao": "Slides",
+              "url": "https://drive.google.com/drive/folders/11rUv9QW8Q_mgwfHqF2_LegZqCjmQ93tp?usp=drive_link"
+            },
+            "Conteúdo": {
+              "descricao": "Conteúdo",
+              "url": "https://drive.google.com/drive/folders/1pWug4U-Or5oGbHBTQ0jNWHiC1XM7kokf?usp=drive_link"
+            },
+            "Atividades": {
+              "descricao": "Atividades",
+              "url": "https://drive.google.com/drive/folders/14Qu1All7-QNSfztiVgEdYVW7hcCPAvaq?usp=drive_link"
+            }
+          }
+        },
+        {
+          "nome": "Redes de computadores",
+          "links": {
+            "Pasta Geral": {
+              "descricao": "Pasta Geral",
+              "url": "https://drive.google.com/drive/folders/185Vx5Sxp9ix58p6k2TmAOsWWH4_ERcJ_?usp=sharing"
+            },
+            "Slides": {
+              "descricao": "Slides",
+              "url": "https://drive.google.com/drive/folders/1m4ZR74EQZBsC4-VX5h7Ptqc88D27TwIq?usp=drive_link"
+            },
+            "Conteúdo": {
+              "descricao": "Conteúdo",
+              "url": "https://drive.google.com/drive/folders/1ZrkO8oeLpTtFNYXsYXvIOp7OS1weoyPf?usp=drive_link",
+              "disabled": true
+            },
+            "Atividades": {
+              "descricao": "Atividades",
+              "url": "https://drive.google.com/drive/folders/1iYyVXXuVMISTJNj1A0-msRMM0aTlGYDe?usp=drive_link"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

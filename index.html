@@ -1,0 +1,194 @@
+<!-- ============================================== -->
+<!-- ARQUIVO: index.html -->
+<!-- ============================================== -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conteúdos das Disciplinas do professor Arthur Assuncao </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .discipline-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .discipline-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      // ============================
+      // COMPONENTE PRINCIPAL
+      // ============================
+      function App() {
+        const [dados, setDados] = useState({ cursos: [] });
+        const [carregando, setCarregando] = useState(true);
+        const [erro, setErro] = useState(null);
+
+        useEffect(() => {
+          fetch('./data/disciplinas.json')
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error('Erro ao carregar os dados');
+              }
+              return res.json();
+            })
+            .then((data) => {
+              setDados(data);
+              setCarregando(false);
+            })
+            .catch((err) => {
+              setErro(err.message);
+              setCarregando(false);
+            });
+        }, []);
+
+        if (carregando) {
+          return (
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+              <div className="text-center">
+                <div className="text-4xl mb-4">⏳</div>
+                <p className="text-slate-600 text-lg">Carregando disciplinas...</p>
+              </div>
+            </div>
+          );
+        }
+
+        if (erro) {
+          return (
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+              <div className="text-center">
+                <div className="text-4xl mb-4">⚠️</div>
+                <p className="text-red-600 text-lg">{erro}</p>
+                <p className="text-slate-500 text-sm mt-2">
+                  Verifique se o arquivo <code>data/disciplinas.json</code> existe.
+                </p>
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col">
+            {/* Cabeçalho */}
+            <header className="bg-indigo-700 text-white py-6 shadow-md">
+              <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+                <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+                  <span>📚</span> Conteudo das Disciplinas
+                </h1>
+                <p className="text-sm text-indigo-200 font-medium hidden sm:block">
+                  Prof. Arthur Nascimento
+                </p>
+              </div>
+            </header>
+
+            {/* Conteúdo */}
+            <main className="flex-1 max-w-6xl mx-auto px-6 py-10 w-full">
+              <div className="space-y-12">
+                {dados.cursos.map((grupo, idx) => (
+                  <div key={idx}>
+                    <h2 className="text-2xl font-bold text-slate-700 border-l-4 border-indigo-500 pl-4 mb-6">
+                      {grupo.curso}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {grupo.disciplinas.map((disciplina) => (
+                        <DisciplineCard key={disciplina.id} disciplina={disciplina} curso={grupo.curso} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </main>
+
+            {/* Rodapé */}
+            <footer className="bg-slate-800 text-slate-300 py-4 text-center text-sm border-t border-slate-700">
+              <p className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+                <span>© 2026 • Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais - Campus Barbacena</span>
+                <span className="text-slate-500">Atualizado em agosto/2026</span>
+              </p>
+            </footer>
+          </div>
+        );
+      }
+
+      // ============================
+      // COMPONENTE CARD
+      // ============================
+      function DisciplineCard({ disciplina, curso }) {
+        const ordem = ['Pasta Geral', 'Slides', 'Conteúdo', 'Atividades'];
+        const icones = {
+          'Pasta Geral': '📁',
+          'Slides': '📊',
+          'Conteúdo': '📄',
+          'Atividades': '📝',
+        };
+
+        // Verifica se links existe e é um objeto
+        if (!disciplina.links || typeof disciplina.links !== 'object') {
+          return null;
+        }
+
+        const linksOrdenados = ordem
+          .filter((key) => disciplina.links[key])
+          .map((key) => ({
+            key,
+            ...disciplina.links[key],
+          }));
+
+        if (linksOrdenados.length === 0) {
+          return null;
+        }
+
+        return (
+          <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 discipline-card h-full flex flex-col">
+            <div className="px-6 py-5 border-b border-slate-100 bg-slate-50/50">
+              <h3 className="text-xl font-bold text-slate-800">
+                {disciplina.nome}
+              </h3>
+            </div>
+            <ul className="divide-y divide-slate-100 flex-1">
+              {linksOrdenados.map((link) => (
+                <li key={link.key} className={`px-0 py-0 hover:bg-slate-50 transition-colors ${!link.disabled ? '' : 'opacity-50'}`}>
+                  <a
+                    href={!link.disabled ? link.url : '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center text-slate-700 hover:text-indigo-700 font-medium text-sm group py-4 px-6 ${!link.disabled ? '' : 'cursor-not-allowed'}`}
+                  >
+                    
+                    <span className="flex-1"><span className="mr-3 text-lg">{icones[link.key]}</span>{link.descricao}</span>
+                    <span className="text-slate-400 group-hover:translate-x-0.5 transition-transform">
+                      {!link.disabled ? '🔗' : '🚫'}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      // Renderização
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
